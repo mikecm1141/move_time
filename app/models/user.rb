@@ -7,4 +7,8 @@ class User < ApplicationRecord
             :password,
             :password_confirmation,
             presence: true
+
+  def to_s
+    first_name + ' ' + last_name
+  end
 end
