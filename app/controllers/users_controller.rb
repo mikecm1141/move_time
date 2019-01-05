@@ -1,3 +1,6 @@
+# frozen_string_literal: true
+
+# Class for the Users Controller
 class UsersController < ApplicationController
   def new
     @user = User.new
@@ -27,7 +30,6 @@ class UsersController < ApplicationController
               :last_name,
               :email,
               :password,
-              :password_confirmation
-            )
+            :password_confirmation)
   end
 end

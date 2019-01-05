@@ -39,7 +39,7 @@ describe 'Users' do
       expect(current_path).to eq register_path
       expect(page).to have_content(
         'Password confirmation doesn\'t match Password'
-        )
+                                  )
     end
   end
 end
