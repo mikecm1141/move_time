@@ -26,11 +26,11 @@ end
 
 group :test do
   gem 'capybara'
+  gem 'simplecov'
   gem 'codecov'
   gem 'database_cleaner'
   gem 'factory_bot_rails'
   gem 'launchy'
-  gem 'simplecov'
   gem 'shoulda-matchers'
 end
 
