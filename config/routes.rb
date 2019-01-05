@@ -1,5 +1,8 @@
 Rails.application.routes.draw do
   root 'welcome#index'
 
-  resources :users, only: %i[new]
+  # User Routes
+  get '/register', to: 'users#new', as: 'register'
+  post '/register', to: 'users#create', as: 'users'
+  get '/dashboard', to: 'users#show', as: 'dashboard'
 end
