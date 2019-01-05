@@ -7,7 +7,7 @@ describe 'Users' do
 
       click_on 'Sign Up'
 
-      expect(current_path).to eq new_user_path
+      expect(current_path).to eq register_path
 
       fill_in :user_first_name, with: 'Mike'
       fill_in :user_last_name, with: 'McKee'
