@@ -1,7 +1,9 @@
+# frozen_string_literal: true
+
 require 'rails_helper'
 
 describe 'Users' do
-  context 'Account Registration' do
+  context 'Account Registration - Valid' do
     it 'allows user to register an account' do
       visit root_path
 
@@ -21,7 +23,9 @@ describe 'Users' do
       expect(page).to have_content 'Log Out'
       expect(page).to_not have_content 'Sign Up'
     end
+  end
 
+  context 'Account Registration - Invalid' do
     it 'denies account creation if passwords do not match' do
       visit register_path
 
@@ -33,7 +37,9 @@ describe 'Users' do
       click_on 'Create Account'
 
       expect(current_path).to eq register_path
-      expect(page).to have_content 'Password confirmation doesn\'t match Password'
+      expect(page).to have_content(
+        'Password confirmation doesn\'t match Password'
+        )
     end
   end
 end
