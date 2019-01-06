@@ -19,7 +19,7 @@ describe 'Sessions' do
 
       expect(current_path).to eq dashboard_path
       expect(page).to have_content 'Successfully signed in'
-      expect(page).to have_content "Welcome #{@user.to_s}"
+      expect(page).to have_content "Welcome #{@user}"
     end
   end
 
@@ -39,11 +39,11 @@ describe 'Sessions' do
   context 'Signing Out - Valid' do
     it 'should allow a signed in user to sign out' do
       allow_any_instance_of(ApplicationController).to receive(:current_user)
-                                                  .and_return(@user)
+        .and_return(@user)
 
       visit dashboard_path
 
-      expect(page).to have_content "Welcome #{@user.to_s}"
+      expect(page).to have_content "Welcome #{@user}"
 
       click_on 'Sign Out'
 

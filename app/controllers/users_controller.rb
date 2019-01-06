@@ -2,7 +2,7 @@
 
 # Class for the Users Controller
 class UsersController < ApplicationController
-  before_action :require_user, :get_user, only: :show
+  before_action :require_user, :user, only: :show
 
   def new
     @user = User.new
@@ -34,7 +34,7 @@ class UsersController < ApplicationController
               :password_confirmation)
   end
 
-  def get_user
+  def user
     @user ||= User.find(current_user.id)
   end
 end

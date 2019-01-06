@@ -2,7 +2,7 @@
 
 # Class for handling sessions at the controller level
 class SessionsController < ApplicationController
-  before_action :get_user, only: :create
+  before_action :user, only: :create
   before_action :require_user, :destroy_session, only: :destroy
 
   def new; end
@@ -24,13 +24,14 @@ class SessionsController < ApplicationController
   end
 
   private
+
   attr_reader :user
 
   def session_params
     params.require(:login).permit(:email, :password)
   end
 
-  def get_user
+  def user
     @user ||= User.find_by(email: session_params[:email])
   end
 
