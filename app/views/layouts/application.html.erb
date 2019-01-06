@@ -33,10 +33,10 @@
             </li>
           <% end %>
         </ul>
-        <form class="form-inline my-2 my-lg-0">
-          <input class="form-control mr-sm-2" type="search" placeholder="City, State">
-          <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-        </form>
+        <%= form_tag :search, method: :get, class: 'form-inline my-2 my-lg-0' do %>
+          <%= text_field_tag :q, nil, class: 'form-control mr-sm-2', placeholder: 'City', required: true %>
+          <%= submit_tag 'Search', class: 'btn btn-outline-success my-2 my-sm-0' %>
+        <% end %>
       </div>
     </nav>
     <div class="container p-3">

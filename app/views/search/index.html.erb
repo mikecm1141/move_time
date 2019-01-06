@@ -1,0 +1,8 @@
+<h2>Search Results for <i><%= @results.query %></i></h2>
+<h3><span class="text-muted">Results: <%= @results.count %></span></h3>
+
+<div class="list-group">
+  <% @results.cities.each do |city| %>
+    <%= link_to city.name, '#', class: 'list-group-item list-group-item-action' %>
+  <% end %>
+</div>
