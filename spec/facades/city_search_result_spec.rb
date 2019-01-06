@@ -19,7 +19,7 @@ describe 'City Search Result' do
 
     context '#count' do
       it 'returns total number of cities in the result' do
-        expect(subject.count).to eq 14
+        expect(subject.count).to eq 7
       end
     end
   end

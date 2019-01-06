@@ -1,2 +1,40 @@
 <h1><%= @city.name %></h1>
+<h5>Data Year: <%= @city.info_year %></h5>
 <h5>Population: <%= @city.population %></h5>
+<h5>Median Age: <%= @city.median_age %> years</h5>
+<h5>Mean Commute Time: <%= @city.mean_commute_minutes %> minutes</h5>
+<h5>
+  Median Household Income: 
+  <%= number_to_currency(@city.median_household_income) %>
+</h5>
+<h5>
+  Median Property Value: <%= number_to_currency(@city.median_property_value) %>
+</h5>
+<h5>Population Ranking: <%= @city.pop_rank.ordinalize %></h5>
+<h5>Income Ranking: <%= @city.income_rank.ordinalize %></h5>
+
+<br>
+
+<h2>Transportation Data</h2>
+<h6>How do people get to work?</h6>
+<h5>Bicycle: <%= @city.bicycle_transport %></h5>
+<h5>Carpool: <%= @city.carpool_transport %></h5>
+<h5>Alone: <%= @city.alone_transport %></h5>
+<h5>Motorcycle: <%= @city.motorcycle_transport %></h5>
+<h5>Public Transportation: <%= @city.public_transport %></h5>
+<h5>Taxi: <%= @city.taxi_transport %></h5>
+<h5>Walking: <%= @city.walking_transport %></h5>
+<h5>Work From Home: <%= @city.home_workers %></h5>
+<h5>Total Workers: <%= @city.total_workers %></h5>
+
+<br>
+
+<h2>Ethnicity Breakdown</h2>
+<h5>Native American/Alaskan Native: <%= @city.eth_native %></h5>
+<h5>Black: <%= @city.eth_black %></h5>
+<h5>White: <%= @city.eth_white %></h5>
+<h5>Asian: <%= @city.eth_asian %></h5>
+<h5>Hawaiian/Pacific Islander: <%= @city.eth_pacific %></h5>
+<h5>Other/Unknown: <%= @city.eth_other %></h5>
+<h5>2 or More: <%= @city.eth_two_or_more %></h5>
+<h5>Latino: <%= @city.eth_latino %></h5>
