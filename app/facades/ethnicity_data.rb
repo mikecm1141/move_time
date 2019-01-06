@@ -1,3 +1,6 @@
+# frozen_string_literal: true
+
+# Module for city ethnicity data
 module EthnicityData
   def eth_native
     ethnicity_data[:pop_native]&.ceil

@@ -1,3 +1,6 @@
+# frozen_string_literal: true
+
+# Module for all transport data methods
 module TransportData
   def bicycle_transport
     transport_data[:transport_bicycle]&.ceil
