@@ -2,7 +2,7 @@
 
 # Facade for the City Show pages
 class CityInformation
-  include Serviceable
+  include Serviceable, TransportData, EthnicityData
 
   attr_reader :id
 
