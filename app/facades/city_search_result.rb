@@ -20,8 +20,6 @@ class CitySearchResult
 
   private
 
-  attr_reader :city_results
-
   def teleport_service
     TeleportService.new
   end

@@ -5,14 +5,13 @@ require 'rails_helper'
 describe 'City Search Item' do
   subject {
     CitySearchItem.new(
-      { 
-        matching_full_name: 'Denver, Colorado, United States',
-        '_links': {
-          'city:item': {
-            href: 'https://api.teleport.org/api/cities/geonameid:5419384/'
-          }
+      matching_full_name: 'Denver, Colorado, United States',
+      '_links': {
+        'city:item': {
+          href: 'https://api.teleport.org/api/cities/geonameid:5419384/'
         }
-      })
+      }
+    )
   }
 
   it 'exists with standard attributes' do
