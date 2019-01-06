@@ -22,7 +22,6 @@ class UsersController < ApplicationController
   def show; end
 
   private
-  attr_reader :user
 
   def user_params
     params
