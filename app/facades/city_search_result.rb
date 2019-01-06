@@ -11,7 +11,7 @@ class CitySearchResult
   end
 
   def cities
-    hashed_data.map do |city_data|
+    city_results.map do |city_data|
       CitySearchItem.new(city_data)
     end
   end
@@ -23,12 +23,6 @@ class CitySearchResult
   private
 
   def city_results
-    @city_results ||= data_usa_service.city_results(query)
-  end
-
-  def hashed_data
-    city_results[:data].map do |city|
-      city_results[:headers].zip(city).to_h.symbolize_keys
-    end
+    @city_results ||= hashed_data(data_usa_service.city_results(query))
   end
 end

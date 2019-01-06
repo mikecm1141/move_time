@@ -6,6 +6,14 @@ class DataUsaService
     fetch_json("/attrs/search/?q=#{query}&kind=geo")
   end
 
+  def city_data(geo_id)
+    fetch_json("/api/?geo=#{geo_id}&#{city_acs_url}")
+  end
+
+  def city_information(geo_id)
+    fetch_json("/attrs/geo/#{geo_id}/")
+  end
+
   private
 
   def conn
@@ -17,5 +25,9 @@ class DataUsaService
 
   def fetch_json(url)
     JSON.parse(conn.get(url).body, symbolize_names: true)
+  end
+
+  def city_acs_url
+    "show=geo&sumlevel=place&force=acs.yg&year=latest"
   end
 end

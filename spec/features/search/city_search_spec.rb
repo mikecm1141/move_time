@@ -12,10 +12,10 @@ describe 'City Search' do
 
       expect(current_path).to eq search_path
       expect(page).to have_content 'Search Results for Denver'
-      expect(page).to have_content 'Results: 7'
-      expect(page).to have_content 'Denver, Colorado, United States'
-      expect(page).to have_content 'Danvers, Massachusetts, United States'
-      expect(page).to have_content 'Denver, Pennsylvania, United States'
+      expect(page).to have_content 'Results: 14'
+      expect(page).to have_content 'Denver, CO'
+      expect(page).to have_content 'Denver, PA'
+      expect(page).to have_content 'Denver, MO'
     end
   end
 end

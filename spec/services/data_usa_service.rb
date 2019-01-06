@@ -2,11 +2,11 @@
 
 require 'rails_helper'
 
-describe 'Teleport Service' do
-  subject { TeleportService.new }
+describe 'Data USA Service' do
+  subject { DataUsaService.new }
 
   it 'exists' do
-    expect(subject).to be_a(TeleportService)
+    expect(subject).to be_a(DataUsaService)
   end
 
   context 'Instance Methods' do
@@ -15,9 +15,8 @@ describe 'Teleport Service' do
         results = subject.city_results('Denver')
 
         expect(results).to be_a(Hash)
-        expect(results).to have_key(:_embedded)
-        expect(results[:_embedded]).to have_key(:'city:search-results')
-        expect(results).to have_key(:count)
+        expect(results).to have_key(:data)
+        expect(results).to have_key(:headers)
       end
     end
   end
