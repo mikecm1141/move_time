@@ -2,6 +2,8 @@
 
 # Class for the Users Controller
 class UsersController < ApplicationController
+  before_action :require_user, :get_user, only: :show
+
   def new
     @user = User.new
   end
@@ -12,16 +14,15 @@ class UsersController < ApplicationController
       session[:user_id] = @user.id.to_s
       redirect_to dashboard_path
     else
-      flash.now[:notice] = @user.errors.full_messages.join(', ')
+      flash.now[:error] = @user.errors.full_messages.join('. ')
       render :new
     end
   end
 
-  def show
-    @user = User.find(current_user.id)
-  end
+  def show; end
 
   private
+  attr_reader :user
 
   def user_params
     params
@@ -31,5 +32,9 @@ class UsersController < ApplicationController
               :email,
               :password,
               :password_confirmation)
+  end
+
+  def get_user
+    @user ||= User.find(current_user.id)
   end
 end
