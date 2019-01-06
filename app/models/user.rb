@@ -10,6 +10,8 @@ class User < ApplicationRecord
             :password_confirmation,
             presence: true
 
+  validates :email, uniqueness: true
+
   def to_s
     first_name + ' ' + last_name
   end
