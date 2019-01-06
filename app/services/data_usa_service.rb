@@ -1,19 +1,15 @@
 # frozen_string_literal: true
 
-# Service class for connecting to the Teleport API
-class TeleportService
+# Service class for connecting to the Data USA API
+class DataUsaService
   def city_results(query)
-    fetch_json("/api/cities/?search=#{query}")
-  end
-
-  def basic_city_data(id)
-    fetch_json("/api/cities/geonameid:#{id}")
+    fetch_json("/attrs/search/?q=#{query}&kind=geo")
   end
 
   private
 
   def conn
-    Faraday.new(url: 'https://api.teleport.org') do |faraday|
+    Faraday.new(url: 'https://api.datausa.io') do |faraday|
       faraday.request :url_encoded
       faraday.adapter Faraday.default_adapter
     end
