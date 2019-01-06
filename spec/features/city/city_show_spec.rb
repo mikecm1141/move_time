@@ -10,11 +10,11 @@ describe 'City Show Page' do
       fill_in :q, with: 'Denver'
       click_on 'Search'
 
-      click_on 'Denver, Colorado, United States'
+      click_on 'Denver, CO'
 
-      expect(current_path).to eq '/city/5419384'
+      expect(current_path).to eq '/city'
       expect(page).to have_content 'Denver'
-      expect(page).to have_content 'Population: 682545'
+      expect(page).to have_content 'Population: 693060'
     end
   end
 end

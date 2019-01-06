@@ -3,6 +3,10 @@
 
 <div class="list-group">
   <% @results.cities.each do |city| %>
-    <%= link_to city.name, "/city/#{city.id}", class: 'list-group-item list-group-item-action' %>
+    <%= 
+      link_to city.name,
+              "/city?q=#{city.slug}&id=#{city.id}",
+              class: 'list-group-item list-group-item-action'
+    %>
   <% end %>
 </div>

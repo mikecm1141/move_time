@@ -11,16 +11,20 @@ class CityInformation
   end
 
   def name
-    basic_data[:name]
+    city_information[:display_name]
   end
 
   def population
-    basic_data[:population]
+    city_data[:pop]
   end
 
   private
 
-  def basic_data
-    @basic_data ||= teleport_service.basic_city_data(id)
+  def city_information
+    @city_information ||= hashed_data(data_usa_service.city_information(id))[0]
+  end
+
+  def city_data
+    @city_data ||= hashed_data(data_usa_service.city_data(id))[0]
   end
 end

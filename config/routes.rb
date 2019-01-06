@@ -15,5 +15,5 @@ Rails.application.routes.draw do
   get '/search', to: 'search#index'
 
   # City Routes
-  get '/city/:id', to: 'city#show'
+  get '/city', to: 'city#show'
 end

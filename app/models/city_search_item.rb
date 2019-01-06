@@ -2,18 +2,13 @@
 
 # The class for a city as a search item
 class CitySearchItem
-  attr_reader :name
+  attr_reader :id,
+              :name,
+              :slug
 
   def initialize(city_data)
-    @name = city_data[:matching_full_name]
-    @link = city_data[:'_links'][:'city:item'][:href]
+    @id   = city_data[:id]
+    @name = city_data[:display]
+    @slug = city_data[:url_name]
   end
-
-  def id
-    link.scan(/\d/).join
-  end
-
-  private
-
-  attr_reader :link
 end

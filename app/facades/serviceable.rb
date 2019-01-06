@@ -4,7 +4,13 @@
 module Serviceable
   private
 
-  def teleport_service
-    TeleportService.new
+  def data_usa_service
+    DataUsaService.new
+  end
+
+  def hashed_data(json_hash)
+    json_hash[:data].map do |city|
+      json_hash[:headers].zip(city).to_h.symbolize_keys
+    end
   end
 end

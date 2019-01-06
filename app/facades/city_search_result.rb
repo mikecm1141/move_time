@@ -11,7 +11,7 @@ class CitySearchResult
   end
 
   def cities
-    city_results[:'city:search-results'].map do |city_data|
+    city_results.map do |city_data|
       CitySearchItem.new(city_data)
     end
   end
@@ -23,6 +23,6 @@ class CitySearchResult
   private
 
   def city_results
-    @city_results ||= teleport_service.city_results(query)[:_embedded]
+    @city_results ||= hashed_data(data_usa_service.city_results(query))
   end
 end
