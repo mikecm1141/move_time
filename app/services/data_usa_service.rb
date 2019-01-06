@@ -28,6 +28,6 @@ class DataUsaService
   end
 
   def city_acs_url
-    "show=geo&sumlevel=place&force=acs.yg&year=latest"
+    'show=geo&sumlevel=place&force=acs.yg&year=latest'
   end
 end

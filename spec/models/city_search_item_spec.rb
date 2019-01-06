@@ -4,7 +4,11 @@ require 'rails_helper'
 
 describe 'City Search Item' do
   subject {
-    CitySearchItem.new(id: '23953939', display: 'Denver, CO', url_name: 'denver-co')
+    CitySearchItem.new(
+      id: '23953939',
+      display: 'Denver, CO',
+      url_name: 'denver-co'
+    )
   }
 
   it 'exists with standard attributes' do
