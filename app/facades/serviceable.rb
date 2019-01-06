@@ -4,7 +4,7 @@
 module Serviceable
   private
 
-  def teleport_service
-    TeleportService.new
+  def data_usa_service
+    DataUsaService.new
   end
 end
