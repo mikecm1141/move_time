@@ -20,7 +20,7 @@ describe 'Users' do
 
       expect(current_path).to eq dashboard_path
       expect(page).to have_content 'Welcome Mike McKee'
-      expect(page).to have_content 'Log Out'
+      expect(page).to have_content 'Sign Out'
       expect(page).to_not have_content 'Sign Up'
     end
   end
