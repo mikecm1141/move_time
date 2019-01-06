@@ -6,6 +6,10 @@ class TeleportService
     fetch_json("/api/cities/?search=#{query}")
   end
 
+  def basic_city_data(id)
+    fetch_json("/api/cities/geonameid:#{id}")
+  end
+
   private
 
   def conn
