@@ -2,6 +2,8 @@
 
 # Facade for the city search results
 class CitySearchResult
+  include Serviceable
+
   attr_reader :query
 
   def initialize(query)
@@ -19,10 +21,6 @@ class CitySearchResult
   end
 
   private
-
-  def teleport_service
-    TeleportService.new
-  end
 
   def city_results
     @city_results ||= teleport_service.city_results(query)[:_embedded]
