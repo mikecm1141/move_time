@@ -25,8 +25,6 @@ class SessionsController < ApplicationController
 
   private
 
-  attr_reader :user
-
   def session_params
     params.require(:login).permit(:email, :password)
   end
