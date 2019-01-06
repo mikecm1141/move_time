@@ -1,14 +1,6 @@
 <div class="d-flex justify-content-center">
   <div class="col-md-8">
     <h1>Create MoveTime Account</h1>
-    <% if flash[:notice] %>
-      <div class="alert alert-danger alert-dismissible fade show" role="alert">
-        <%= flash[:notice] %>
-        <button type="button" class="close" data-dismiss="alert">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-    <% end %>
     <%= form_for @user do |f| %>
       <div class="form-row">
         <div class="form-group col-md-6">
