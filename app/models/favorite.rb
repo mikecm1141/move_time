@@ -1,8 +1,9 @@
 class Favorite < ApplicationRecord
   include Serviceable
 
-  has_many :user_favorites
-  has_many :users, through: :user_favorites
+  belongs_to :user
+
+  default_scope { where(active: true) }
 
   def name
     external_data[:display_name]

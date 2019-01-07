@@ -6,14 +6,9 @@ describe 'Favorites' do
   context 'User views dashboard' do
     it 'shows user their active favorites' do
       user = create(:user)
-      favorite1 = create(:favorite, geo_id: '16000US0820000')
-      favorite2 = create(:favorite, geo_id: '16000US4218888')
-      favorite3 = create(:favorite, geo_id: '16000US3717000')
-
-      user.set_favorite(favorite1)
-      user.set_favorite(favorite2)
-      user.set_favorite(favorite3)
-      user.deactivate_favorite(favorite3)
+      favorite1 = create(:favorite, geo_id: '16000US0820000', user: user)
+      favorite2 = create(:favorite, geo_id: '16000US4218888', user: user)
+      favorite3 = create(:favorite, geo_id: '16000US3717000', user: user, active: false)
 
       allow_any_instance_of(ApplicationController).to receive(:current_user)
         .and_return(user)
