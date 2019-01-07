@@ -1,1 +1,10 @@
 <h1>Welcome <%= @user.to_s %></h1>
+<h4>Active Favorites: <%= @user.favorites.count %></h4>
+
+<div class="list-group">
+  <% @user.favorites.all.each do |favorite| %>
+    <%= link_to favorite.name,
+              "/city?q=#{favorite.slug}&id=#{favorite.geo_id}",
+              class: 'list-group-item list-group-item-action favorites' %>
+  <% end %>
+</div>
