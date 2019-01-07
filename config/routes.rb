@@ -16,4 +16,13 @@ Rails.application.routes.draw do
 
   # City Routes
   get '/city', to: 'city#show'
+
+  # API Routes
+
+  namespace :api do
+    namespace :v0 do
+      post '/favorites', to: 'favorites#create'
+      delete '/favorites', to: 'favorites#destroy'
+    end
+  end
 end
