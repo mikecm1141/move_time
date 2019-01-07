@@ -12,6 +12,10 @@ describe User, type: :model do
     it { should validate_uniqueness_of :email }
   end
 
+  context 'Relationships' do
+    it { should have_many :user_favorites }
+    it { should have_many(:favorites).through(:user_favorites) }
+  end
   context 'Instance Methods' do
     context '#to_s' do
       it 'should return user\'s full name' do

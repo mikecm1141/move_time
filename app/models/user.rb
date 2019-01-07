@@ -12,6 +12,8 @@ class User < ApplicationRecord
 
   validates :email, uniqueness: true
 
+  has_many :user_favorites
+  has_many :favorites, through: :user_favorites
   def to_s
     first_name + ' ' + last_name
   end
