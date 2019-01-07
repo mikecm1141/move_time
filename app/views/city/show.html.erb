@@ -8,7 +8,7 @@
   <input type="hidden" id="userId" value="<%= current_user.id %>">
   <input type="hidden" id="geoId" value="<%= @city.id %>">
   <input type="hidden" id="locationName" value="<%= @city.name %>">
-  <% if current_user&.active_favorite?(@city.id) %>
+  <% if current_user&.favorites.exists?(@city.id) %>
     <span id="favorites">
       <a href="javascript:void(0)" id="remove">Remove from Favorites</a>
     </span>
