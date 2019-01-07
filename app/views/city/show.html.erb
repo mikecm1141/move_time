@@ -1,14 +1,9 @@
-<div id="message" class="alert alert-danger alert-dismissible fade show d-none" role="alert">
-   <button type="button" class="close" data-dismiss="alert">
-     <span aria-hidden="true">&times;</span>
-   </button>
- </div>
 <h1 id="header-city"><%= @city.name %></h1>
 <% if current_user %>
   <input type="hidden" id="userId" value="<%= current_user.id %>">
   <input type="hidden" id="geoId" value="<%= @city.id %>">
   <input type="hidden" id="locationName" value="<%= @city.name %>">
-  <% if current_user&.favorites.exists?(@city.id) %>
+  <% if current_user&.favorites.exists?(geo_id: @city.id) %>
     <span id="favorites">
       <a href="javascript:void(0)" id="remove">Remove from Favorites</a>
     </span>
