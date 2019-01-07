@@ -22,8 +22,8 @@ describe 'Favorites' do
 
       expect(page).to have_content "Welcome #{user}"
 
-      expect(page).to have_content "Active Favorites: 2"
-      expect(page).to have_selector(".favorites", count: 2)
+      expect(page).to have_content 'Active Favorites: 2'
+      expect(page).to have_selector('.favorites', count: 2)
     end
   end
 end
