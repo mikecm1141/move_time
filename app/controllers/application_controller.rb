@@ -7,7 +7,9 @@ class ApplicationController < ActionController::Base
   end
 
   def require_user
-    flash[:error] = 'You must be signed in for that action'
-    redirect_to root_path unless current_user
+    unless current_user
+      flash[:error] = 'You must be signed in for that action'
+      redirect_to root_path
+    end
   end
 end
