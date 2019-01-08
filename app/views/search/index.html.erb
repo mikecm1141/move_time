@@ -1,3 +1,12 @@
+<nav>
+  <ol class="breadcrumb">
+    <li class="breadcrumb-item">
+      <%= link_to 'Home', root_path %>
+    </li>
+    <li class="breadcrumb-item active">Search</li>
+  </ol>
+</nav>
+
 <h2>Search Results for <em class="text-info"><%= @results.query %></em></h2>
 <h3><span class="text-muted">Results: <%= @results.count %></span></h3>
 
