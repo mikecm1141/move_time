@@ -11,6 +11,11 @@ class CityController < ApplicationController
   private
 
   def save_view
-    current_user.views.find_or_create_by(geo_id: params[:id]) if current_user
+    if current_user
+      current_user
+        .views
+        .find_or_create_by(geo_id: params[:id])
+        .update(updated_at: Time.current)
+    end
   end
 end
