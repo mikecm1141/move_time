@@ -8,7 +8,7 @@
                        flex-column align-items-start" do %>
       <div class="d-flex w-100 justify-content-between">
         <h5 class="mb-1"><%= city.name %></h5>
-        <% view = current_user&.views.find_by(geo_id: city.id) %>
+        <% view = current_user&.views&.find_by(geo_id: city.id) %>
         <% if view %>
           <h6>
             <span class="badge badge-info">
