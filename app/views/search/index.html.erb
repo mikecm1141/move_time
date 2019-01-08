@@ -9,7 +9,7 @@
       <div class="d-flex w-100 justify-content-between">
         <h5 class="mb-1"><%= city.name %></h5>
       </div>
-      <% if current_user&.favorites.unscoped.exists?(geo_id: city.id) %>
+      <% if current_user&.favorites&.unscoped&.exists?(geo_id: city.id) %>
         <% favorite = current_user&.favorites.unscoped.find_by(geo_id: city.id) %>
         <% if favorite.active %>
           <small class="text-muted">
