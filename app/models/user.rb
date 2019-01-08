@@ -13,6 +13,7 @@ class User < ApplicationRecord
   validates :email, uniqueness: true
 
   has_many :favorites
+  has_many :views
 
   def to_s
     first_name + ' ' + last_name

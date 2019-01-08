@@ -14,6 +14,7 @@ describe User, type: :model do
 
   context 'Relationships' do
     it { should have_many :favorites }
+    it { should have_many :views }
   end
 
   context 'Instance Methods' do
