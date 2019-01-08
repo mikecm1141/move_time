@@ -1,12 +1,26 @@
-<h2>Search Results for <i><%= @results.query %></i></h2>
+<h2>Search Results for <em class="text-info"><%= @results.query %></em></h2>
 <h3><span class="text-muted">Results: <%= @results.count %></span></h3>
 
 <div class="list-group">
   <% @results.cities.each do |city| %>
-    <%= 
-      link_to city.name,
-              "/city?q=#{city.slug}&id=#{city.id}",
-              class: 'list-group-item list-group-item-action'
-    %>
+    <%= link_to "/city?q=#{city.slug}&id=#{city.id}",
+                class: "list-group-item list-group-item-action 
+                       flex-column align-items-start" do %>
+      <div class="d-flex w-100 justify-content-between">
+        <h5 class="mb-1"><%= city.name %></h5>
+      </div>
+      <% if current_user&.favorites&.unscoped&.exists?(geo_id: city.id) %>
+        <% favorite = current_user&.favorites.unscoped.find_by(geo_id: city.id) %>
+        <% if favorite.active %>
+          <small class="text-muted">
+            Location saved into favorites on <%= favorite.updated_at.to_date %>
+          </small>
+        <% else %>
+          <small class="text-muted">
+            Location removed from favorites on <%= favorite.updated_at.to_date %>
+          </small>
+        <% end %>
+      <% end %>
+    <% end %>
   <% end %>
 </div>
