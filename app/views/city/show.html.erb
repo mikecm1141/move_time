@@ -1,3 +1,19 @@
+<nav>
+  <ol class="breadcrumb">
+    <li class="breadcrumb-item">
+      <%= link_to 'Home', root_path %>
+    </li>
+    <li class="breadcrumb-item">
+      <% if request.env['HTTP_REFERER'].match?(/dashboard/) %>
+        <%= link_to 'Dashboard', dashboard_path %>
+      <% else %>
+        <%= link_to 'Search', request.env['HTTP_REFERER'] %>
+      <% end %>
+    </li>
+    <li class="breadcrumb-item active"><%= @city.name %></li>
+  </ol>
+</nav>
+
 <h1 id="header-city"><%= @city.name %></h1>
 <% if current_user %>
   <input type="hidden" id="userId" value="<%= current_user.id %>">

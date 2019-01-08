@@ -1,3 +1,11 @@
+<nav>
+  <ol class="breadcrumb">
+    <li class="breadcrumb-item">
+      <%= link_to 'Home', root_path %>
+    </li>
+    <li class="breadcrumb-item active">Dashboard</li>
+  </ol>
+</nav>
 <h1>Welcome <%= @user.to_s %></h1>
 <h4>Active Favorites: <%= @user.favorites.count %></h4>
 
