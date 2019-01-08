@@ -24,12 +24,12 @@
         <% if favorite.active %>
           <p class="mb-1 text-muted">
             Location saved into favorites 
-            <%= time_ago_in_words(favorite.updated_at.to_date) %> ago
+            <%= time_ago_in_words(favorite.updated_at) %> ago
           </p>
         <% else %>
           <p class="mb-1 text-muted">
             Location removed from favorites 
-            <%= time_ago_in_words(favorite.updated_at.to_date) %> ago
+            <%= time_ago_in_words(favorite.updated_at) %> ago
           </p>
         <% end %>
       <% end %>
