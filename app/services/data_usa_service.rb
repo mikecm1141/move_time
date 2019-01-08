@@ -27,6 +27,7 @@ class DataUsaService
   def conn
     Faraday.new(url: 'https://api.datausa.io') do |faraday|
       faraday.request :url_encoded
+      faraday.use Faraday::HttpCache, store: Rails.cache, serializer: Marshal
       faraday.adapter Faraday.default_adapter
     end
   end
