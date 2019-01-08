@@ -8,17 +8,29 @@
                        flex-column align-items-start" do %>
       <div class="d-flex w-100 justify-content-between">
         <h5 class="mb-1"><%= city.name %></h5>
+        <% view = current_user&.views.find_by(geo_id: city.id) %>
+        <% if view %>
+          <h6>
+            <span class="badge badge-info">
+              Last viewed <%= time_ago_in_words(view.updated_at) %> ago
+            </span>
+          </h6>
+        <% else %>
+          <h6><span class="badge badge-success">New</span></h6>
+        <% end %>
       </div>
       <% if current_user&.favorites&.unscoped&.exists?(geo_id: city.id) %>
         <% favorite = current_user&.favorites.unscoped.find_by(geo_id: city.id) %>
         <% if favorite.active %>
-          <small class="text-muted">
-            Location saved into favorites on <%= favorite.updated_at.to_date %>
-          </small>
+          <p class="mb-1 text-muted">
+            Location saved into favorites 
+            <%= time_ago_in_words(favorite.updated_at.to_date) %> ago
+          </p>
         <% else %>
-          <small class="text-muted">
-            Location removed from favorites on <%= favorite.updated_at.to_date %>
-          </small>
+          <p class="mb-1 text-muted">
+            Location removed from favorites 
+            <%= time_ago_in_words(favorite.updated_at.to_date) %> ago
+          </p>
         <% end %>
       <% end %>
     <% end %>
