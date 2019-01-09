@@ -10,13 +10,11 @@ describe 'Data USA Service' do
   end
 
   context 'Instance Methods' do
-    context '#city_results(query)' do
-      it 'returns a JSON response of city results' do
+    context '#lat_long(city)' do
+      it 'returns a JSON response of lat long results' do
         results = subject.city_results('Denver')
 
         expect(results).to be_a(Hash)
-        expect(results).to have_key(:data)
-        expect(results).to have_key(:headers)
       end
     end
   end
