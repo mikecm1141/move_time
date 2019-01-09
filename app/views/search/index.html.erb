@@ -17,15 +17,17 @@
                        flex-column align-items-start" do %>
       <div class="d-flex w-100 justify-content-between">
         <h5 class="mb-1"><%= city.name %></h5>
-        <% view = current_user&.views&.find_by(geo_id: city.id) %>
-        <% if view %>
-          <h6>
-            <span class="badge badge-info">
-              Last viewed <%= time_ago_in_words(view.updated_at) %> ago
-            </span>
-          </h6>
-        <% else %>
-          <h6><span class="badge badge-success">New</span></h6>
+        <% if current_user %>
+          <% view = current_user&.views&.find_by(geo_id: city.id) %>
+          <% if view %>
+            <h6>
+              <span class="badge badge-info">
+                Last viewed <%= time_ago_in_words(view.updated_at) %> ago
+              </span>
+            </h6>
+          <% else %>
+            <h6><span class="badge badge-success">New</span></h6>
+          <% end %>
         <% end %>
       </div>
       <% if current_user&.favorites&.unscoped&.exists?(geo_id: city.id) %>
