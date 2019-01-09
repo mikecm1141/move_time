@@ -48,7 +48,35 @@ class CityInformation
     city_data[:income_rank].to_i
   end
 
+  def airport_distance
+    airport_directions[:routes][0][:legs][0][:distance][:text]
+  end
+
+  def airport_time
+    airport_directions[:routes][0][:legs][0][:duration][:text]
+  end
+
+  def airport_name
+    find_closest_airport[:results][0][:name]
+  end
+
   private
+
+  def coordinates
+    google_service.lat_long(name)[:results][0][:geometry][:location]
+  end
+
+  def airport_coords
+    find_closest_airport[:results][0][:geometry][:location]
+  end
+
+  def airport_directions
+    @airport_directions ||=  google_service.airport_distance(coordinates, airport_coords)
+  end
+
+  def find_closest_airport
+    @find_closest_airport ||= google_service.airport_lookup(coordinates)
+  end
 
   def city_information
     @city_information ||= hashed_data(data_usa_service.city_information(id))[0]
