@@ -4,6 +4,10 @@
 module Serviceable
   private
 
+  def google_service
+    GoogleService.new
+  end
+
   def data_usa_service
     DataUsaService.new
   end

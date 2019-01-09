@@ -30,14 +30,16 @@ $(document).ready(function() {
   });
 
   function changeLink(status) {
-    var spanTag = $('#favorites')[0].children[0];
+    var button = $('#favorites')[0].children[0];
 
     if (status === 201) {
-      spanTag.id = 'remove';
-      spanTag.text = 'Remove from Favorites';
+      button.id = 'remove';
+      button.innerText = 'Remove Favorite';
+      button.className = 'badge badge-danger';
     } else if (status === 204) {
-      spanTag.id = 'add';
-      spanTag.text = 'Add to Favorites';
+      button.id = 'add';
+      button.innerText = 'Add Favorite';
+      button.className = 'badge badge-success';
     }
   }
 });
