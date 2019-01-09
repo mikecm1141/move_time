@@ -7,3 +7,33 @@
   cities you've already looked at.</p>
   <%= link_to 'Register Now', register_path, class: 'btn btn-info btn-lg' %>
 </div>
+
+<div class="container">
+  <div class="row">
+    <div class="col-sm-6">
+      <h1>Recently Viewed Cities</h1>
+      <div class="list-group list-group-flush">
+        <% @views.each do |view| %>
+          <%=
+            link_to view.name,
+                    "/city?q=#{view.slug}&id=#{view.geo_id}",
+                    class: 'list-group-item list-group-item-action'
+          %>
+      <% end %>
+      </div>
+    </div>
+    <div class="col-sm-6">
+      <h1>Recently Favorited Cities</h1>
+      <div class="list-group list-group-flush">
+      <% @favorites.each do |favorite| %>
+        
+          <%=
+            link_to favorite.name,
+                    "/city?q=#{favorite.slug}&id=#{favorite.geo_id}",
+                    class: 'list-group-item list-group-item-action'
+          %>
+      <% end %>
+      </div>
+    </div>
+  </div>
+</div>
