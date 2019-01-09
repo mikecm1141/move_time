@@ -11,8 +11,12 @@
 
 <div class="list-group">
   <% @user.favorites.all.each do |favorite| %>
-    <%= link_to favorite.name,
-              "/city?q=#{favorite.slug}&id=#{favorite.geo_id}",
-              class: 'list-group-item list-group-item-action favorites' %>
+    <%= link_to "/city?q=#{favorite.slug}&id=#{favorite.geo_id}",
+                class: 'list-group-item list-group-item-action favorites' do %>
+      <div class="d-flex w-100 justify-content-between">          
+        <h5 class="mb-1"><%= favorite.name %></h5>
+        <small>Saved <%= time_ago_in_words(favorite.updated_at) %> ago</small>
+      </div>
+    <% end %>
   <% end %>
 </div>
