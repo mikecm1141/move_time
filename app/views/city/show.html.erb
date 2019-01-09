@@ -3,13 +3,15 @@
     <li class="breadcrumb-item">
       <%= link_to 'Home', root_path %>
     </li>
-    <li class="breadcrumb-item">
       <% if request.env['HTTP_REFERER'].match?(/dashboard/) %>
-        <%= link_to 'Dashboard', dashboard_path %>
-      <% else %>
-        <%= link_to 'Search', request.env['HTTP_REFERER'] %>
+        <li class="breadcrumb-item">
+          <%= link_to 'Dashboard', dashboard_path %>
+        </li>
+      <% elsif request.env['HTTP_REFERER'].match?(/search/) %>
+        <li class="breadcrumb-item">
+          <%= link_to 'Search', request.env['HTTP_REFERER'] %>
+        </li>
       <% end %>
-    </li>
     <li class="breadcrumb-item active"><%= @city.name %></li>
   </ol>
 </nav>
