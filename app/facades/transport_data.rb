@@ -2,6 +2,19 @@
 
 # Module for all transport data methods
 module TransportData
+  def transport_hash
+    {
+      Bicycle: bicycle_transport,
+      Carpool: carpool_transport,
+      Alone:   alone_transport,
+      Motorcycle: motorcycle_transport,
+      'Public Transport,ation': public_transport,
+      Taxi: taxi_transport,
+      Walking: walking_transport,
+      'Work From Home': home_workers
+    }
+  end
+
   def bicycle_transport
     transport_data[:transport_bicycle]&.ceil
   end

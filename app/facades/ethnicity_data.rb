@@ -2,6 +2,19 @@
 
 # Module for city ethnicity data
 module EthnicityData
+  def eth_hash
+    {
+      'Native American/Alaskan Native': eth_native,
+      Black: eth_black,
+      White: eth_white,
+      Asian: eth_asian,
+      'Hawaiian/Pacific Islander': eth_pacific,
+      'Other/Unknown': eth_other,
+      Latinx: eth_latino,
+      Mixed: eth_two_or_more
+    }
+  end
+
   def eth_native
     ethnicity_data[:pop_native]&.ceil
   end
