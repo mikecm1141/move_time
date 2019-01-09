@@ -19,9 +19,9 @@
 * [Testing Suite](#testing-suite)
     * [Running the Test Suite](#running-the-test-suite)
 * [Screenshots](#screenshots)
-      * [Home Page](#home-page)
-      * [City View Page](#city-view-page)
-      * [City Search Page](#city-search-page)
+    * [Home Page](#home-page)
+    * [City View Page](#city-view-page)
+    * [City Search Page](#city-search-page)
 * [Contributors/Developers](#contributorsdevelopers)
 * [Special Thanks](#special-thanks)
 
