@@ -17,7 +17,7 @@ describe 'Favorites' do
 
       click_link 'Denver, CO'
 
-      click_on 'Add to Favorites'
+      click_on 'Add Favorite'
     end
   end
 end

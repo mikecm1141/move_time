@@ -14,58 +14,120 @@
   </ol>
 </nav>
 
-<h1 id="header-city"><%= @city.name %></h1>
-<% if current_user %>
-  <input type="hidden" id="userId" value="<%= current_user.id %>">
-  <input type="hidden" id="geoId" value="<%= @city.id %>">
-  <input type="hidden" id="locationName" value="<%= @city.name %>">
-  <% if current_user&.favorites.exists?(geo_id: @city.id) %>
-    <span id="favorites">
-      <a href="javascript:void(0)" id="remove">Remove from Favorites</a>
-    </span>
-  <% else %>
-    <span id="favorites">
-      <a href="javascript:void(0)" id="add">Add to Favorites</a>
-    </span>
-  <% end %>
-<% end %>
-<br><br>
-<h5>Data Year: <%= @city.info_year %></h5>
-<h5>Population: <%= @city.population %></h5>
-<h5>Median Age: <%= @city.median_age %> years</h5>
-<h5>Mean Commute Time: <%= @city.mean_commute_minutes %> minutes</h5>
-<h5>
-  Median Household Income: 
-  <%= number_to_currency(@city.median_household_income) %>
-</h5>
-<h5>
-  Median Property Value: <%= number_to_currency(@city.median_property_value) %>
-</h5>
-<h5>Population Ranking: <%= @city.pop_rank.ordinalize %></h5>
-<h5>Income Ranking: <%= @city.income_rank.ordinalize %></h5>
+<div class="d-flex p-2 flex-row justify-content-start">
+  <div class="bd-highlight flex-grow-1 text-center">
+    <div class="d-flex flex-row justify-content-center align-items-center">
+      <div class="bd-highlight">
+        <h1 id="header-city"><%= @city.name %></h1>
+      </div>
+        <% if current_user %>
+          <div class="bd-highlight ml-2 mb-2 align-self-center">
+            <% if current_user&.favorites.exists?(geo_id: @city.id) %>
+              <span id="favorites">
+                <a href="javascript:void(0)" id="remove" class="badge badge-danger">Remove Favorite</a>
+              </span>
+            <% else %>
+              <span id="favorites">
+                <a href="javascript:void(0)" id="add" class="badge badge-success">Add Favorite</a>
+              </span>
+            <% end %>
+            <input type="hidden" id="userId" value="<%= current_user.id %>">
+            <input type="hidden" id="geoId" value="<%= @city.id %>">
+            <input type="hidden" id="locationName" value="<%= @city.name %>">
+          </div>
+        <% end %>
+      </div>
+
+      <div class="d-flex mt-3 justify-content-around align-items-start">
+        <div class="flex-row">
+          <div class="bd-highlight text-center">
+            <h4>Population Rank</h4>
+            <h1 class="display-4">
+              <%= @city.pop_rank.ordinalize %>
+            </h1>
+            <h4>
+              <a class="text-info" href="javascript:void(0)" data-toggle="tooltip" title="Population (<%= @city.info_year %>)">
+                <%= number_with_delimiter(@city.population, delimiter: ',') %>
+              </a>
+            </h4>
+            <br/>
+          </div>
+          <div class="bd-highlight text-center">
+            <h4>Median Age</h4>
+            <h1>
+              <%= @city.median_age %> years
+            </h1>
+          </div>
+        </div>
+        <div class="flex-row">
+          <div class="bd-highlight text-center">
+            <h4>Income Rank</h4>
+            <h1 class="display-4">
+              <%= @city.income_rank.ordinalize %>
+            </h1>
+            <h4>
+              <a class="text-info" href="javascript:void(0)" data-toggle="tooltip" title="Median Household Income (<%= @city.info_year %>)">
+                <%= number_to_currency(@city.median_household_income, precision: 0) %>
+              </a>
+            </h4>
+            <br/>
+          </div>
+          <div class="bd-highlight text-center">
+            <h4>Median Property Value</h4>
+            <h1>
+              <%= number_to_currency(@city.median_property_value, precision: 0) %>
+            </h1>
+          </div>
+        </div>
+      </div>
+  </div>
+  <div class="p-1 bd-highlight">
+    <iframe 
+      width="520"
+      height="360"
+      style="border: 0"
+      src="https://www.google.com/maps/embed/v1/place?q=<%= @city.name %>&key=<%= ENV['GOOGLE_MAPS_KEY'] %>">
+    </iframe>
+  </div>
+</div>
+
+<div class="container">
+  <div class="row">
+    <div class="col-sm-5">
+      <h1>Quick Facts</h1>
+      <h5 class="ml-1 text-muted"><%= @city.name %> at a glance</h5>
+
+      <div class="container">
+        <div class="row">
+          <div class="col-sm-12"><strong>Closest Airport</strong></div>
+        </div>
+        <div class="row">
+          <div class="col-sm-7"><%= @city.airport_name %></div>
+          <div class="col-sm-5"><%= @city.airport_distance %> (<%= @city.airport_time %>)</div>
+        </div>
+        <div class="mt-3 row">
+          <div class="col-sm-7"><strong>Mean Commute Time</strong></div>
+          <div class="col-sm-5"><%= @city.mean_commute_minutes %> minutes</div>
+        </div>
+        <div class="mt-3 row">
+          <div class="col-sm-7"><strong>Total Workers</strong></div>
+          <div class="col-sm-5"><%= number_with_delimiter(@city.total_workers, delimiter: ',') %></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-sm-7">
+      <h1>Ethnicity Breakdown</h1>
+      <h5 class="ml-1 text-muted">How diverse is it here?</h5>
+      <%= pie_chart(@city.eth_hash) %>
+    </div>
+  </div>
+</div>
+
+<div class="d-flex p-2 flex-column">
+  <h1>Transportation</h1>
+  <h5 class="ml-2 text-muted">How do people get around?</h5>
+  <%= bar_chart(@city.transport_hash) %>
+</div>
 
 <br>
-
-<h2>Transportation Data</h2>
-<h6>How do people get to work?</h6>
-<h5>Bicycle: <%= @city.bicycle_transport %></h5>
-<h5>Carpool: <%= @city.carpool_transport %></h5>
-<h5>Alone: <%= @city.alone_transport %></h5>
-<h5>Motorcycle: <%= @city.motorcycle_transport %></h5>
-<h5>Public Transportation: <%= @city.public_transport %></h5>
-<h5>Taxi: <%= @city.taxi_transport %></h5>
-<h5>Walking: <%= @city.walking_transport %></h5>
-<h5>Work From Home: <%= @city.home_workers %></h5>
-<h5>Total Workers: <%= @city.total_workers %></h5>
-
-<br>
-
-<h2>Ethnicity Breakdown</h2>
-<h5>Native American/Alaskan Native: <%= @city.eth_native %></h5>
-<h5>Black: <%= @city.eth_black %></h5>
-<h5>White: <%= @city.eth_white %></h5>
-<h5>Asian: <%= @city.eth_asian %></h5>
-<h5>Hawaiian/Pacific Islander: <%= @city.eth_pacific %></h5>
-<h5>Other/Unknown: <%= @city.eth_other %></h5>
-<h5>2 or More: <%= @city.eth_two_or_more %></h5>
-<h5>Latino: <%= @city.eth_latino %></h5>
