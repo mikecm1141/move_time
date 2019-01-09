@@ -1,5 +1,5 @@
 class Favorite < ApplicationRecord
-  include Serviceable
+  include Informational
 
   belongs_to :user
 
@@ -11,11 +11,5 @@ class Favorite < ApplicationRecord
 
   def slug
     external_data[:url_name]
-  end
-
-  private
-
-  def external_data
-    @external_data ||= hashed_data(data_usa_service.city_information(geo_id))[0]
   end
 end
