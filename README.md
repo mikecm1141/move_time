@@ -9,6 +9,22 @@
 
 [Live Link](https://move-time.herokuapp.com)
 
+## Table of Contents
+
+* [Description/Purpose](#descriptionpurpose)
+* [System Requirements](#system-requirements)
+* [Application Requirements](#application-requirements)
+* [Installation](#installation)
+* [Configuration](#configuration)
+* [Testing Suite](#testing-suite)
+    * [Running the Test Suite](#running-the-test-suite)
+* [Screenshots](#screenshots)
+        * [Home Page](#home-page)
+        * [City View Page](#city-view-page)
+        * [City Search Page](#city-search-page)
+* [Contributors/Developers](#contributorsdevelopers)
+* [Special Thanks](#special-thanks)
+
 ## Description/Purpose
 
 This application is designed to help users find out which cities they may
