@@ -11,23 +11,21 @@ $(document).ready(function() {
     }
 
     if (event.target.id === 'add') {
-      fetch('/api/v0/favorites', {
-        method: 'POST',
-        headers: { 'Content-Type':'application/json' },
-        body: JSON.stringify(data)
-      })
-        .catch(error => console.error({ error }))
-        .then(data => changeLink(data.status));
+      fetchCall('POST', data);
     } else if (event.target.id === 'remove') {
-      fetch('/api/v0/favorites', {
-        method: 'DELETE',
-        headers: { 'Content-Type':'application/json' },
-        body: JSON.stringify(data)
-      })
-        .catch(error => console.error({ error }))
-        .then(data => changeLink(data.status));
+      fetchCall('DELETE', data);
     }
   });
+
+  function fetchCall(httpVerb, data) {
+    fetch('/api/v0/favorites', {
+        method: httpVerb,
+        headers: { 'Content-Type':'application/json' },
+        body: JSON.stringify(data)
+      })
+        .catch(error => console.error({ error }))
+        .then(data => changeLink(data.status));
+  }
 
   function changeLink(status) {
     var button = $('#favorites')[0].children[0];
