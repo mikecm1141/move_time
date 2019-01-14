@@ -2,6 +2,7 @@
 [![rails](https://img.shields.io/badge/rails-v5.2.2-orange.svg)](https://rubyonrails.org/)
 [![codecov](https://codecov.io/gh/mikecm1141/move_time/branch/master/graph/badge.svg)](https://codecov.io/gh/mikecm1141/move_time)
 [![Build Status](https://travis-ci.com/mikecm1141/move_time.svg?branch=master)](https://travis-ci.com/mikecm1141/move_time)
+[![Maintainability](https://api.codeclimate.com/v1/badges/3022b67be990af99c6ff/maintainability)](https://codeclimate.com/github/mikecm1141/move_time/maintainability)
 [![Waffle.io - Columns and their card count](https://badge.waffle.io/mikecm1141/move_time.svg?columns=all)](https://waffle.io/mikecm1141/move_time)
 
 
