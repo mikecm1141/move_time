@@ -2,6 +2,12 @@
 
 # Service for handling Google API requests
 class GoogleService
+  include Connectable
+
+  def initialize
+    @base_url = 'https://maps.googleapis.com'
+  end
+
   def airport_lookup(coordinates)
     fetch_json("/maps/api/place/nearbysearch/json?key=#{ENV['GOOGLE_MAPS_KEY']}&location=#{coordinates[:lat]},#{coordinates[:lng]}&radius=50000&keyword=airport&type=airport&rankby=prominence")
   end  
@@ -16,15 +22,5 @@ class GoogleService
 
   private
 
-  def conn
-    Faraday.new(url: 'https://maps.googleapis.com') do |faraday|
-      faraday.request :url_encoded
-      faraday.use Faraday::HttpCache, store: Rails.cache, serializer: Marshal
-      faraday.adapter Faraday.default_adapter
-    end
-  end
-
-  def fetch_json(url)
-    JSON.parse(conn.get(url).body, symbolize_names: true)
-  end
+  attr_reader :base_url
 end

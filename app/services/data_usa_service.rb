@@ -2,6 +2,12 @@
 
 # Service class for connecting to the Data USA API
 class DataUsaService
+  include Connectable
+
+  def initialize
+    @base_url = 'https://api.datausa.io'
+  end
+
   def city_results(query)
     fetch_json("/attrs/search/?kind=geo&q=#{query}")
   end
@@ -24,17 +30,7 @@ class DataUsaService
 
   private
 
-  def conn
-    Faraday.new(url: 'https://api.datausa.io') do |faraday|
-      faraday.request :url_encoded
-      faraday.use Faraday::HttpCache, store: Rails.cache, serializer: Marshal
-      faraday.adapter Faraday.default_adapter
-    end
-  end
-
-  def fetch_json(url)
-    JSON.parse(conn.get(url).body, symbolize_names: true)
-  end
+  attr_reader :base_url
 
   def city_acs_url
     'show=geo&sumlevel=place&year=latest'
